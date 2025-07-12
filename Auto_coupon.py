@@ -25,7 +25,7 @@ coupon_dic = {
 
     6: "SENAREGOGO",
     8: "GOODLUCK",
-    9: "SEVENSDARK",
+    9: "SEVENVSDARK",
     10: "7777777",
 
     12: "SURPRISE",
