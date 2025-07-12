@@ -19,53 +19,71 @@ wait = WebDriverWait(driver, 1)
 coupon_dic = {
     1: "RINKARMA",
     2: "SECRETCODE",
+    3: "777SENARE",
+    4: "JJOLJACK",    
     5: "LOVESENA",
+
     6: "SENAREGOGO",
     8: "GOODLUCK",
+    9: "SEVENSDARK",
     10: "7777777",
+
     12: "SURPRISE",
     13: "THEMONTHOFSENA",
     15: "7SENASENA7",
+    
     16: "INTOTHESENA",
     18: "REBIRTHBACK",
     19: "WELCOMEBACK",
+    
+    23: "LODING",
     24: "GUILDWAR",
     25: "HEROSOMMON",
     27: "INFOCODEX",
+
     33: "BONVOYAGE",
     35: "INFINITETOWER",
     36: "STORYEVENT",
     37: "EVANKARIN",
     38: "SENARAID",
     39: "WELCOMESENA",
+
     41: "MOREKEYS",
     42: "SHOWMETHEMONEY",
-    43: "FORTAGNIA",
     44: "MAILBOX",
     46: "RELEASEPET",
     48: "NOHOSCHRONICLE",
     49: "UPDATES",
     50: "THANKYOU",
+
     51: "SENAHAJASENA",
     55: "FORTAGNIA",
     56: "YUISSONG",
     57: "YONGSANIM",
+    58: "PUKIDANCE",
     59: "ADVENTURER",
+
     62: "LEGENDSRAID",
+    65: "HTRIBERANES",
+
     67: "TREASURE",
     68: "THEHOLYCROSS",
     69: "VALKYRIE",
     70: "LOVELYRUBY",
+    
     72: "SENAEVENTS",
     73: "CMMAY",
     74: "PDKIMJUNGKI",
     75: "FUSEGETSPECIAL",
     76: "DARKKNIGHTS",
+    77: "JULYSENAMONTH"
 }
 
-driver.get(url)
-i = 0
 
+driver.get(url)
+total = 77
+i = 0
+j = 0
 for idx, coupon in coupon_dic.items():
     try:
         print(f"\n[{idx}] 쿠폰 처리 중: {coupon}")
@@ -105,6 +123,7 @@ for idx, coupon in coupon_dic.items():
             print("→ 쿠폰 등록 성공")
             back_button.click()
             time.sleep(1)
+            i += 1
         except:
             try:
                 # 이미 등록된 경우
@@ -113,17 +132,16 @@ for idx, coupon in coupon_dic.items():
                     '//*[@id="__next"]/main/div/div[2]/div[2]/div[1]/div/div[3]/div/div/div[2]/button'
                 )
                 print("→ 이미 등록된 쿠폰입니다")
+                j += 1
                 confirm_btn.click()
                 time.sleep(1)
             except Exception as e:
                 print(f"❌ 예상되지 않은 모달 상태: {e}")
 
-        i += 1
-
     except Exception as e:
         print(f"[{idx}] 처리 실패: {e}")
         continue
 
-print(f"\n✅ 총 {i}개 쿠폰 처리 완료")
+print(f"\n총 쿠폰 수: {total}개\n✅ {i}개 쿠폰 처리 완료\n❌ 이미 등록된 쿠폰: {j}개\n남은 쿠폰 수: {total - (i + j)}개")
 driver.quit()
 input("\n엔터를 누르면 종료됩니다...")
